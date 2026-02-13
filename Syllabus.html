@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus - CSEBS Department</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #334155;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0,0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #059669;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 12px;
+            background: rgba(5, 150, 105, 0.05);
+            margin: 24px 40px;
+            transition: all 0.3s ease;
+        }
+        .back-link:hover {
+            background: rgba(5, 150, 105, 0.1);
+            transform: translateX(-4px);
+        }
+        .course-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 32px 40px;
+            margin: 0 40px 40px;
+            border-radius: 16px;
+        }
+        .course-code {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .course-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            font-size: 1rem;
+        }
+        .content {
+            padding: 0 40px 40px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 32px;
+            background: #f8fafc;
+            border-radius: 16px;
+            border-left: 5px solid #10b981;
+        }
+        .section h3 {
+            color: #059669;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .unit {
+            background: white;
+            padding: 24px;
+            margin-bottom: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 4px solid #3b82f6;
+        }
+        .unit h4 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .unit-content {
+            color: #475569;
+            line-height: 1.7;
+        }
+        .co-list {
+            list-style: none;
+            padding: 0;
+        }
+        .co-list li {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            margin-bottom: 12px;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #3b82f6;
+        }
+        .co-number {
+            font-weight: 700;
+            color: #1e293b;
+            font-size: 1.1rem;
+            display: inline-block;
+            width: 40px;
+            text-align: center;
+        }
+        .mapping-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .mapping-table th,
+        .mapping-table td {
+            padding: 16px 12px;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .mapping-table th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            font-weight: 600;
+        }
+        .mapping-table td {
+            font-weight: 500;
+        }
+        .print-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 40px 32px;
+        }
+        @media (max-width: 768px) {
+            .back-link, .print-btn {
+                margin-left: 16px;
+                margin-right: 16px;
+            }
+            .content {
+                padding: 0 16px 32px;
+            }
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; }
+            .back-link, .print-btn { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-book-open"></i> CSEBS Syllabus</h1>
+            <p>Sri Manakula Vinayagar Engineering College<br>Department of Computer Science & Business Systems</p>
+        </div>
+
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            Back to Dashboard
+        </a>
+
+        <button onclick="window.print()" class="print-btn">
+            <i class="fas fa-print"></i> Print Syllabus
+        </button>
+
+        <div class="course-header">
+            <div class="course-code">U23CBT202</div>
+            <div class="course-details">
+                <div><strong>Course Name:</strong> DATA STRUCTURES & ALGORITHMS</div>
+                <div><strong>Credits:</strong> 3 | <strong>L-T-P:</strong> 3-0-0</div>
+                <div><strong>Max Marks:</strong> CAM: 25 | ESE: 75 | Total: 100</div>
+                <div><strong>Exam Type:</strong> Theory Exam (TE)</div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h3><i class="fas fa-graduation-cap"></i> Prerequisites</h3>
+                <p class="unit-content">Basic understanding of C Programming Language.</p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-lightbulb"></i> Course Outcomes</h3>
+                <ul class="co-list">
+                    <li><span class="co-number">CO1</span> Understand the usage and analysis of algorithms in computing. <strong>(K1)</strong></li>
+                    <li><span class="co-number">CO2</span> Implement and apply linear data structures to solve various problems. <strong>(K3)</strong></li>
+                    <li><span class="co-number">CO3</span> Represent and apply non-linear data structures to solve real time problems. <strong>(K2)</strong></li>
+                    <li><span class="co-number">CO4</span> Develop and analyse algorithms for sorting and searching data organized in linear and non-linear data structures. <strong>(K3)</strong></li>
+                    <li><span class="co-number">CO5</span> Understand various file organization and accessing methods. <strong>(K2)</strong></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-list-ol"></i> Syllabus Units</h3>
+                
+                <div class="unit">
+                    <h4><i class="fas fa-1"></i> UNIT-I: Concepts of Algorithm and Data Organisation (9 Hrs)</h4>
+                    <p class="unit-content">Algorithm specification – Recursion - Performance analysis - Asymptotic Notation - The Big-O - Omega and Theta notation - Programming Style - Refinement of Coding - Time-Space Trade Off – Testing - Data Abstraction</p>
+                </div>
+
+                <div class="unit">
+                    <h4><i class="fas fa-2"></i> UNIT-II: Linear Data Structure (9 Hrs)</h4>
+                    <p class="unit-content">Array - Stack - Queue - Linked-list and its types - Various Representations - Operations & Applications of Linear Data Structures.</p>
+                </div>
+
+                <div class="unit">
+                    <h4><i class="fas fa-3"></i> UNIT-III: Non-Linear Data Structure (9 Hrs)</h4>
+                    <p class="unit-content">Trees - Binary Tree - Threaded Binary Tree - Binary Search Tree – B-Tree - B+ Tree - AVL Tree - Splay Tree. Graphs: Basic Terminologies - Directed – Undirected - Various Representations - Operations - Graph search and traversal algorithms - complexity analysis - Applications of Non-Linear Data Structures.</p>
+                </div>
+
+                <div class="unit">
+                    <h4><i class="fas fa-4"></i> UNIT-IV: Searching And Sorting On Various Data Structures (9 Hrs)</h4>
+                    <p class="unit-content">Sequential Search - Binary Search - Comparison Trees - Breadth First Search - Depth First Search Insertion Sort - Selection Sort - Shell Sort - Divide and Conquer Sort - Merge Sort - Quick Sort- Heapsort - Introduction to Hashing</p>
+                </div>
+
+                <div class="unit">
+                    <h4><i class="fas fa-5"></i> UNIT-V: File Concepts (9 Hrs)</h4>
+                    <p class="unit-content">File Organisation – Sequential – Direct - Indexed Sequential - Hashed and various types of accessing schemes.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-table"></i> COs/POs/PSOs Mapping</h3>
+                <table class="mapping-table">
+                    <thead>
+                        <tr>
+                            <th>COs</th>
+                            <th>PO1</th>
+                            <th>PO2</th>
+                            <th>PO3</th>
+                            <th>PO4</th>
+                            <th>PO5</th>
+                            <th>PO12</th>
+                            <th>PSO1</th>
+                            <th>PSO2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CO1</td><td>1</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>1</td><td>-</td></tr>
+                        <tr><td>CO2</td><td>3</td><td>2</td><td>1</td><td>-</td><td>-</td><td>-</td><td>2</td><td>1</td></tr>
+                        <tr><td>CO3</td><td>2</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>2</td><td>1</td></tr>
+                        <tr><td>CO4</td><td>3</td><td>2</td><td>1</td><td>-</td><td>-</td><td>-</td><td>3</td><td>2</td></tr>
+                        <tr><td>CO5</td><td>2</td><td>1</td><td>-</td><td>-</td><td>-</td><td>-</td><td>1</td><td>1</td></tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 12px; font-size: 0.9rem; color: #64748b;">
+                    <strong>Correlation Level:</strong> 1-Low, 2-Medium, 3-High
+                </p>
+            </div>
+
+            <div class="section">
+                <h3><i class="fas fa-book"></i> Text Books & References</h3>
+                <div style="columns: 2; gap: 24px;">
+                    <div>
+                        <h4 style="color: #1e293b; margin-bottom: 16px;">Text Books:</h4>
+                        <ol style="color: #475569; margin-left: 20px;">
+                            <li>Thomas H. Cormen et al., <em>Introduction to Algorithms</em>, MIT Press, 4th Ed., 2022</li>
+                            <li>E. Horowitz et al., <em>Fundamentals of Data Structures</em>, Universities Press, 2nd Ed., 2008</li>
+                            <li>A. V. Aho et al., <em>Data Structures and Algorithms</em>, Pearson, 1st Ed., 2003</li>
+                        </ol>
+                    </div>
+                    <div>
+                        <h4 style="color: #1e293b; margin-bottom: 16px;">Web References:</h4>
+                        <ul style="color: #475569; margin-left: 20px;">
+                            <li><a href="https://www.geeksforgeeks.org/data-structures/" target="_blank">GeeksforGeeks DSA</a></li>
+                            <li><a href="https://nptel.ac.in/courses/106/102/106102064/" target="_blank">NPTEL DSA Course</a></li>
+                            <li><a href="https://www.tutorialspoint.com/data_structures_algorithms/index.htm" target="_blank">TutorialsPoint DSA</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

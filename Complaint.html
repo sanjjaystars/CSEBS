@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Box - CSEBS Department</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+            color: #334155;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0,0, 0.1), 0 10px 10px -5px rgba(0, 0,0, 0.04);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 40px 32px;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        .form-section {
+            padding: 48px 40px;
+        }
+        .form-group {
+            margin-bottom: 28px;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            color: #1e293b;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #fafbff;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #dc2626;
+            box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+            background: white;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 4px 0 0 0;
+            transform: scale(1.2);
+        }
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-weight: 400;
+            color: #64748b;
+        }
+        .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
+        }
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #475569;
+            border: 2px solid #e2e8f0;
+        }
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+        .success-message,
+        .error-message {
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            display: none;
+            font-weight: 500;
+        }
+        .success-message {
+            background: #10b981;
+            color: white;
+        }
+        .error-message {
+            background: #ef4444;
+            color: white;
+        }
+        .email-preview {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border: 2px solid #dc2626;
+            color: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            display: none;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #dc2626;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+            background: rgba(220, 38, 38, 0.05);
+        }
+        .back-link:hover {
+            background: rgba(220, 38, 38, 0.1);
+            transform: translateX(-4px);
+        }
+        .email-info {
+            background: rgba(220, 38, 38, 0.1);
+            border: 2px solid rgba(220, 38, 38, 0.2);
+            color: #dc2626;
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 16px;
+            }
+            .form-section {
+                padding: 32px 24px;
+            }
+            .header {
+                padding: 32px 24px;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .btn {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-exclamation-triangle"></i> Complaint Box</h1>
+            <p>Submit your feedback or complaints securely via Email</p>
+        </div>
+
+        <div class="form-section">
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Dashboard
+            </a>
+
+            <div class="email-info">
+                📧 <i class="fas fa-envelope"></i> Complaints sent to: <strong>sanjjay.stars@gmail.com</strong>
+            </div>
+
+            <form id="complaintForm">
+                <div class="form-group">
+                    <label for="studentId">Student ID <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="studentId" name="studentId" required maxlength="20">
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Full Name <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Your Email Address <span style="color: #ef4444;">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Complaint Category <span style="color: #ef4444;">*</span></label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="faculty">Faculty Related</option>
+                        <option value="infrastructure">Infrastructure</option>
+                        <option value="administration">Administration</option>
+                        <option value="examination">Examination</option>
+                        <option value="library">Library</option>
+                        <option value="laboratory">Laboratory</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject <span style="color: #ef4444;">*</span></label>
+                    <input type="text" id="subject" name="subject" required maxlength="100">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description <span style="color: #ef4444;">*</span></label>
+                    <textarea id="description" name="description" placeholder="Please provide detailed information about your complaint..." required></textarea>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="anonymous" name="anonymous">
+                    <label for="anonymous">Submit anonymously (hide Student ID and Name in public records)</label>
+                </div>
+
+                <div id="emailPreview" class="email-preview">
+                    <h4><i class="fas fa-envelope-open"></i> Email Preview</h4>
+                    <div id="previewContent"></div>
+                    <p style="margin-top: 16px; font-size: 0.9rem; color: #64748b;">
+                        Your email client will open with this content pre-filled to sanjjay.stars@gmail.com
+                    </p>
+                </div>
+
+                <div id="successMessage" class="success-message">
+                    <i class="fas fa-check-circle"></i> Email client opened successfully! Reference ID: <strong id="refIdDisplay"></strong>
+                </div>
+
+                <div id="errorMessage" class="error-message">
+                    <i class="fas fa-exclamation-circle"></i> Please fill all required fields correctly.
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-paper-plane"></i>
+                        📧 SEND via Email
+                    </button>
+                    <a href="index.html" class="btn btn-secondary">
+                        <i class="fas fa-times"></i>
+                        Cancel
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // CSEBS Department Official Complaints Email
+        const COMPLAINTS_EMAIL = "sanjjay.stars@gmail.com";
+
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const anonymous = document.getElementById('anonymous').checked;
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Hide previous messages
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('emailPreview').style.display = 'none';
+            
+            // Validate required fields
+            const requiredFields = ['studentId', 'name', 'email', 'category', 'subject', 'description'];
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                const value = formData.get(field);
+                if (!value || value.trim() === '') {
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+            
+            // Prepare complaint data
+            const studentId = anonymous ? '🕶️ ANONYMOUS' : formData.get('studentId');
+            const name = anonymous ? '🕶️ ANONYMOUS' : formData.get('name');
+            const senderEmail = formData.get('email');
+            const category = formData.get('category');
+            const subjectInput = formData.get('subject');
+            const description = formData.get('description');
+            
+            const timestamp = new Date().toLocaleString('en-IN', { 
+                timeZone: 'Asia/Kolkata',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            const refId = 'CSEBS-' + Date.now().toString().slice(-6);
+            
+            // Email subject
+            const emailSubject = `🚨 CSEBS Complaint #${refId}: ${subjectInput}`;
+            
+            // Create professional email body
+            const emailBody = `🚨 *CSEBS DEPARTMENT COMPLAINT #${refId}* 🚨
+
+📋 *COMPLAINT DETAILS:*
+━━━━━━━━━━━━━━━━━━━━━━━
+👤 *Student ID:* ${studentId}
+📛 *Student Name:* ${name}
+✉️ *Sender Email:* ${senderEmail}
+📂 *Category:* ${category.toUpperCase()}
+📝 *Subject:* ${subjectInput}
+🕒 *Submitted:* ${timestamp}
+━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 *COMPLAINT DESCRIPTION:*
+${description}
+
+━━━━━━━━━━━━━━━━━━━━━━━
+*CSEBS Department Complaint Portal*
+*Computer Science & Business Systems*
+*Puducherry, India*
+*Reference ID: ${refId}*
+
+---
+This is an automated complaint submission from the CSEBS Department Portal.`;
+
+            // Show email preview
+            document.getElementById('previewContent').innerHTML = emailBody.replace(/\n/g, '<br>');
+            document.getElementById('emailPreview').style.display = 'block';
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening Email Client...';
+            
+            // Create mailto link
+            const mailtoSubject = encodeURIComponent(emailSubject);
+            const mailtoBody = encodeURIComponent(emailBody);
+            const mailtoLink = `mailto:${COMPLAINTS_EMAIL}?subject=${mailtoSubject}&body=${mailtoBody}`;
+            
+            // Open email client after preview
+            setTimeout(() => {
+                window.location.href = mailtoLink;
+                
+                // Success feedback
+                document.getElementById('refIdDisplay').textContent = refId;
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form
+                this.reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> 📧 SEND via Email';
+                
+                // Scroll to success
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                
+                // Save locally for records
+                localStorage.setItem(`complaint_${refId}`, JSON.stringify({
+                    refId, emailSubject, emailBody, timestamp: new Date().toISOString(), 
+                    status: 'Sent to sanjjay.stars@gmail.com'
+                }));
+            }, 1500);
+        });
+
+        // Anonymous checkbox logic
+        document.getElementById('anonymous').addEventListener('change', function() {
+            const studentIdField = document.getElementById('studentId');
+            const nameField = document.getElementById('name');
+            
+            if (this.checked) {
+                studentIdField.removeAttribute('required');
+                nameField.removeAttribute('required');
+            } else {
+                studentIdField.setAttribute('required', 'required');
+                nameField.setAttribute('required', 'required');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSEBS Department Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #334155;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 12px;
+            letter-spacing: -0.025em;
+        }
+        .header p {
+            font-size: 1.25rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+        }
+        .box {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0,0, 0.1), 0 2px 4px -1px rgba(0, 0,0, 0.06);
+            border: 1px solid rgba(0, 0,0, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .box:hover::before {
+            opacity: 1;
+        }
+        .box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0,0, 0.1), 0 10px 10px -5px rgba(0, 0,0, 0.04);
+            border-color: rgba(59, 130, 246, 0.2);
+        }
+        .icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 24px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        .box:nth-child(1) .icon { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .box:nth-child(2) .icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .box:nth-child(3) .icon { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .box:nth-child(4) .icon { background: linear-gradient(135deg, #10b981, #059669); }
+        .box:nth-child(5) .icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .box:nth-child(6) .icon { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .box:hover .icon {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+        .box h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+        .box p {
+            color: #64748b;
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+        .box a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+        .box a:hover {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+        }
+        .box a i {
+            transition: transform 0.3s ease;
+        }
+        .box a:hover i {
+            transform: translateX(4px);
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+            body {
+                padding: 24px 16px;
+            }
+            .header {
+                margin-bottom: 40px;
+            }
+        }
+        @media (max-width: 480px) {
+            .box {
+                padding: 32px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>CSEBS Department</h1>
+        <p>Computer Science and Business Systems</p>
+    </header>
+    
+    <main class="container">
+        <!-- Timetable -->
+        <section class="box">
+            <div class="icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <h2><i class="fas fa-calendar-check"></i> Time Table</h2>
+            <p>Access the latest class schedules, exam timetables, and faculty availability for all semesters with easy navigation and search functionality.</p>
+            <a href="Timetable.html">
+                View Time Table
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- CAT Exam -->
+        <section class="box">
+            <div class="icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h2><i class="fas fa-brain"></i> CAT Exam</h2>
+            <p>Comprehensive preparation resources, mock tests, performance analytics, and updates on business aptitude exams relevant to CSBS curriculum.</p>
+            <a href="#cat">
+                CAT Resources
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- Syllabus -->
+        <section class="box">
+            <div class="icon">
+                <i class="fas fa-book-open"></i>
+            </div>
+            <h2><i class="fas fa-book"></i> Syllabus</h2>
+            <p>Complete course syllabus, outcomes, and reference materials.</p>
+            <a href="Syllabus.html">
+                View Syllabus
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- Events -->
+        <section class="box">
+            <div class="icon">
+                <i class="fas fa-rocket"></i>
+            </div>
+            <h2><i class="fas fa-star"></i> Events</h2>
+            <p>Celestia 2k26 and upcoming CSEBS events.</p>
+            <a href="Events.html">
+                View Events
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- Complaint Box -->
+        <section class="box">
+            <div class="icon">
+                <i class="fas fa-comments"></i>
+            </div>
+            <h2><i class="fas fa-exclamation-triangle"></i> Complaint Box</h2>
+            <p>Secure and anonymous feedback system with categorized submission, real-time status tracking, and guaranteed resolution timelines.</p>
+            <a href="Complaint.html">
+                Submit Complaint
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+        <!-- Notices -->
+        <section class="box">
+            <div class="icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <h2><i class="fas fa-bullhorn"></i> Notices</h2>
+            <p>Latest department announcements and updates.</p>
+            <a href="Notice.html">
+                View Notices
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+    </main>
+</body>
+</html>
